@@ -7,11 +7,19 @@ using DotNetNuke.Entities.Users;
 using DotNetNuke.Security.Membership;
 using DotNetNuke.Services.Authentication;
 using DotNetNuke.Services.Localization;
+using DotNetNuke.Services.Log.EventLog;
 
 namespace DotNetNuke.Authentication.Cas
 {
     public partial class Login : AuthenticationLoginBase
     {
+        public EventLogController EventLogController { get; set; }
+
+        public Login()
+        {
+            EventLogController = new EventLogController();
+        }
+
         ///// <summary>
         ///// Gets the Return Uri
         ///// </summary>
@@ -53,6 +61,8 @@ namespace DotNetNuke.Authentication.Cas
 
             if (!string.IsNullOrWhiteSpace(Request.QueryString["ticket"]))
             {
+                EventLogController.AddLog("Ticket", "Cas returned with ticket", PortalSettings, -1, EventLogController.EventLogType.ADMIN_ALERT);
+
                 CasLogin();
             }
         }
@@ -64,13 +74,19 @@ namespace DotNetNuke.Authentication.Cas
 
         private void OnAuthComplete(string username, bool success)
         {
+            EventLogController.AddLog("Auth Success", "Auth completed for " + username, PortalSettings, -1, EventLogController.EventLogType.ADMIN_ALERT);
+
             UserLoginStatus loginStatus = UserLoginStatus.LOGIN_FAILURE;
 
             UserInfo objUser = UserController.ValidateUser(PortalId, username, "", "Cas", "", PortalSettings.PortalName, IPAddress, ref loginStatus);
+            UserController.UserLogin(PortalId, objUser, PortalSettings.PortalName, IPAddress, true);
+
+            EventLogController.AddLog("Validation",
+                                      "Validation for user " + username + ". Login status: " + loginStatus.ToString(),
+                                      PortalSettings, -1, EventLogController.EventLogType.ADMIN_ALERT);
 
             //Raise UserAuthenticated Event
-            var eventArgs = new UserAuthenticatedEventArgs(objUser, username, loginStatus, "Cas")
-                                {AutoRegister = true, Authenticated = true};
+            var eventArgs = new UserAuthenticatedEventArgs(objUser, username, loginStatus, "Cas") {AutoRegister = false};
 
             OnUserAuthenticated(eventArgs);
         }
