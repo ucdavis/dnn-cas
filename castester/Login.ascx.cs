@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Specialized;
+using DotNetNuke.Authentication.Cas.Components;
 using DotNetNuke.Common;
 using DotNetNuke.Common.Utilities;
 using DotNetNuke.Entities.Users;
@@ -11,12 +12,6 @@ namespace DotNetNuke.Authentication.Cas
 {
     public partial class Login : AuthenticationLoginBase
     {
-        protected string LastUsedId
-        {
-            get { return "http://test/srkirkland"; }
-        }
-
-        
         ///// <summary>
         ///// Gets the Return Uri
         ///// </summary>
@@ -54,12 +49,24 @@ namespace DotNetNuke.Authentication.Cas
 
         protected override void OnInit(EventArgs e)
         {
-            cmdLogin.Click += new EventHandler(CasLogin);
+            cmdLogin.Click += CasLogin;
+        }
+
+        private void OnAuthComplete(string username, bool success)
+        {
+            UserLoginStatus loginStatus = UserLoginStatus.LOGIN_FAILURE;
+
+            UserInfo objUser = UserController.ValidateUser(PortalId, username, "", "Cas", "", PortalSettings.PortalName, IPAddress, ref loginStatus);
+
+            //Raise UserAuthenticated Event
+            var eventArgs = new UserAuthenticatedEventArgs(objUser, username, loginStatus, "Cas") {AutoRegister = true};
+            OnUserAuthenticated(eventArgs);
+
         }
 
         void CasLogin(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            CASHelper.LoginAndRedirect(OnAuthComplete);
         }
     }
 }

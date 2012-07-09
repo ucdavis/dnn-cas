@@ -54,6 +54,7 @@
     <Reference Include="System.Web.ApplicationServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\CASHelper.cs" />
     <Compile Include="Login.ascx.cs">
       <DependentUpon>Login.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
