@@ -79,8 +79,7 @@ namespace DotNetNuke.Authentication.Cas
             UserLoginStatus loginStatus = UserLoginStatus.LOGIN_FAILURE;
 
             UserInfo objUser = UserController.ValidateUser(PortalId, username, "", "Cas", "", PortalSettings.PortalName, IPAddress, ref loginStatus);
-            UserController.UserLogin(PortalId, objUser, PortalSettings.PortalName, IPAddress, true);
-
+            
             EventLogController.AddLog("Validation",
                                       "Validation for user " + username + ". Login status: " + loginStatus.ToString(),
                                       PortalSettings, -1, EventLogController.EventLogType.ADMIN_ALERT);
