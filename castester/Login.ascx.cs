@@ -69,9 +69,10 @@ namespace DotNetNuke.Authentication.Cas
             UserInfo objUser = UserController.ValidateUser(PortalId, username, "", "Cas", "", PortalSettings.PortalName, IPAddress, ref loginStatus);
 
             //Raise UserAuthenticated Event
-            var eventArgs = new UserAuthenticatedEventArgs(objUser, username, loginStatus, "Cas") {AutoRegister = true};
-            OnUserAuthenticated(eventArgs);
+            var eventArgs = new UserAuthenticatedEventArgs(objUser, username, loginStatus, "Cas")
+                                {AutoRegister = true, Authenticated = true};
 
+            OnUserAuthenticated(eventArgs);
         }
 
         private void CasLogin(object sender = null, EventArgs e = null)

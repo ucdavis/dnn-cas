@@ -92,7 +92,7 @@ namespace DotNetNuke.Authentication.Cas.Components
                         onComplete(kerberos, true); //return kerbId and success
 
                         // set forms authentication ticket
-                        //FormsAuthentication.SetAuthCookie(kerberos, false);
+                        FormsAuthentication.SetAuthCookie(kerberos, false);
 
                         string returnUrl = GetReturnUrl();
 
