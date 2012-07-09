@@ -1,6 +1,6 @@
 <dotnetnuke type="Package" version="5.0">
 	<packages>
-		<package name="DNN_CasAuthentication" type="Auth_System" version="00.01.00">
+		<package name="DNN_CasAuthentication" type="Auth_System" version="00.02.00">
 			<friendlyName>DotNetNuke Cas Authentication Project</friendlyName>
 			<description>The DotNetNuke Cas Authentication Project is an Authentication provider for DotNetNuke that uses the Cas authentication protocol to authenticate users.</description>
             <owner>
@@ -25,7 +25,7 @@
 						<assembly>
 							<path>bin</path>
 							<name>DotNetNuke.Authentication.Cas.dll</name>
-                <version>00.01.00</version>
+                <version>00.02.00</version>
             </assembly>
           </assemblies>
 				</component>
@@ -48,7 +48,7 @@
 						</file>						
           </files>
 				</component>
-          <component type="Cleanup" version="00.01.00">
+          <component type="Cleanup" version="00.02.00">
               <files>
                   <file>
                       <path>bin\Providers</path>

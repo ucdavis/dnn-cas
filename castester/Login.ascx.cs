@@ -47,6 +47,11 @@ namespace DotNetNuke.Authentication.Cas
             }
         }
 
+        protected override void OnLoad(EventArgs e)
+        {
+            CasLogin();
+        }
+
         protected override void OnInit(EventArgs e)
         {
             cmdLogin.Click += CasLogin;
@@ -64,7 +69,7 @@ namespace DotNetNuke.Authentication.Cas
 
         }
 
-        void CasLogin(object sender, EventArgs e)
+        private void CasLogin(object sender = null, EventArgs e = null)
         {
             CASHelper.LoginAndRedirect(OnAuthComplete);
         }
