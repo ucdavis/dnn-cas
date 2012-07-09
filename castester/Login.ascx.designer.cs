@@ -31,15 +31,6 @@ namespace DotNetNuke.Authentication.Cas {
         protected global::System.Web.UI.WebControls.Label lblHelp;
         
         /// <summary>
-        /// plOpenID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UserControl plOpenID;
-        
-        /// <summary>
         /// cmdLogin control.
         /// </summary>
         /// <remarks>
@@ -47,41 +38,5 @@ namespace DotNetNuke.Authentication.Cas {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button cmdLogin;
-        
-        /// <summary>
-        /// trExample control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow trExample;
-        
-        /// <summary>
-        /// lblExample control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblExample;
-        
-        /// <summary>
-        /// trRegister control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow trRegister;
-        
-        /// <summary>
-        /// cmdRegister control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DotNetNuke.UI.WebControls.CommandButton cmdRegister;
     }
 }

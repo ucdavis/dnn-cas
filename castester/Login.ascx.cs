@@ -54,7 +54,12 @@ namespace DotNetNuke.Authentication.Cas
 
         protected override void OnInit(EventArgs e)
         {
+            cmdLogin.Click += new EventHandler(CasLogin);
+        }
 
+        void CasLogin(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -130,7 +130,7 @@
     <value>Example&lt;br/&gt;http://your.name.myopenid.com</value>
   </data>
   <data name="Help.Text" xml:space="preserve">
-    <value>This site supports OpenID login.  If you have associated an OpenID with your User Account, you can use your OpenID to login, by entering it in the box below.&lt;br/&gt;</value>
+    <value>Login with your UC Davis Cas credentials </value>
   </data>
   <data name="plOpenID.Help" xml:space="preserve">
     <value>Enter your OpenID ID  - example http://your.name.myopenid.com</value>
