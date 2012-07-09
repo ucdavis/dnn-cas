@@ -49,7 +49,12 @@ namespace DotNetNuke.Authentication.Cas
 
         protected override void OnLoad(EventArgs e)
         {
-            CasLogin();
+            base.OnLoad(e);
+
+            if (!string.IsNullOrWhiteSpace(Request.QueryString["ticket"]))
+            {
+                CasLogin();
+            }
         }
 
         protected override void OnInit(EventArgs e)
