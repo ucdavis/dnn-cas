@@ -1,0 +1,61 @@
+<dotnetnuke type="Package" version="5.0">
+	<packages>
+		<package name="DNN_CasAuthentication" type="Auth_System" version="00.01.00">
+			<friendlyName>DotNetNuke Cas Authentication Project</friendlyName>
+			<description>The DotNetNuke Cas Authentication Project is an Authentication provider for DotNetNuke that uses the Cas authentication protocol to authenticate users.</description>
+            <owner>
+                <name>Scott Kirkland</name>
+                <organization>UC Davis</organization>
+                <url>http://ucdavis.edu</url>
+            </owner>
+            <dependencies>
+                <dependency type="CoreVersion">05.00.00</dependency>
+            </dependencies>
+            <components>
+				<component type="AuthenticationSystem">
+					<authenticationService>
+						<type>Cas</type>
+						<settingsControlSrc>DesktopModules/AuthenticationServices/Cas/Settings.ascx</settingsControlSrc>
+						<loginControlSrc>DesktopModules/AuthenticationServices/Cas/Login.ascx</loginControlSrc>
+						<logoffControlSrc/>
+					</authenticationService>
+				</component>
+				<component type="Assembly">
+					<assemblies>
+						<assembly>
+							<path>bin</path>
+							<name>DotNetNuke.Authentication.Cas.dll</name>
+                <version>00.01.00</version>
+            </assembly>
+          </assemblies>
+				</component>
+				<component type="File">
+					<files>
+						<basePath>DesktopModules/AuthenticationServices/Cas</basePath>
+						<file>
+							<path>App_LocalResources</path>
+							<name>Login.ascx.resx</name>
+						</file>
+						<file>
+							<path>App_LocalResources</path>
+							<name>Settings.ascx.resx</name>
+						</file>
+						<file>
+							<name>Login.ascx</name>
+						</file>
+						<file>
+							<name>Settings.ascx</name>
+						</file>						
+          </files>
+				</component>
+          <component type="Cleanup" version="00.01.00">
+              <files>
+                  <file>
+                      <path>bin\Providers</path>
+                  </file>
+              </files>
+          </component>
+			</components>
+		</package>
+	</packages>
+</dotnetnuke>
